@@ -1,0 +1,10 @@
+<div class="well hoverwell thumbnails" *ngFor="let event of events">
+    <h2>{{event?.name}} </h2>
+    <div>Price: ${{event?.price}}</div>
+    <div *ngIf="event?.location?.address">
+        <span >Location:{{event?.location?.address}}</span>
+        <span>&nbsp;</span>
+        <span>{{event?.location?.city}}, {{event?.location?.country}}</span>
+    </div>
+    <div *ngIf="event?.onlineUrl">OnlineUrl: {{event?.onlineUrl}}</div>
+</div>
