@@ -1,3 +1,12 @@
 .nav.navbar-nav{font-size:15px;}
 #searchForm {margin-right: 100px;}
 @media (max-width:1200px) {#searchForm {display: none}}
+li>a:hover{
+    color:#47e5e5;
+}
+
+
+li>a.active{
+
+    color:#f96672;
+}

@@ -2,5 +2,11 @@
     margin-left: 10px;
 }
 
-.thumbnail {min-height: 210px;}
+.thumbnails {
+    min-height: 210px;
+    max-width: 400px;
+}
 
+.green{
+    color:#45e5f7;
+}
