@@ -41,7 +41,7 @@ import {  FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/f
     AuthService,
     EventListResolver,
   ],
-  bootstrap: [EventsAppComponent]
+  bootstrap: [EventsAppComponent] 
 })
 export class AppModule { }
 
