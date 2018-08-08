@@ -13,6 +13,8 @@ import { CreateEventComponent } from './events/shared/create-event.component';
 import { Error404Component } from './errors/404.component';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolver } from './events/event-list-resolver.service';
+import { AuthService } from './user/auth.service';
+import {  FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 
 
 @NgModule({
@@ -24,10 +26,11 @@ import { EventListResolver } from './events/event-list-resolver.service';
     EventDetailsComponent,
     CreateEventComponent,
     Error404Component,
-    
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [EventService, EventRouteActivator,
@@ -35,7 +38,8 @@ import { EventListResolver } from './events/event-list-resolver.service';
       provide: 'canDeactivateCreateEvent'
       , useValue: checkdirtyState
     },
-    EventListResolver
+    AuthService,
+    EventListResolver,
   ],
   bootstrap: [EventsAppComponent]
 })
@@ -44,7 +48,6 @@ export class AppModule { }
 export function checkdirtyState(component: CreateEventComponent) {
   if (component.isDirty) {
     return window.confirm("What are you duing man?! Wanna go out?");
-
   }
-  return true;
+  return false;
 }
