@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../user/auth.service';
-import { IUser } from '../user/user.model';
+import { IUser } from '../user/Module/user.model';
 
 @Component({
   selector: 'nav-bar',
