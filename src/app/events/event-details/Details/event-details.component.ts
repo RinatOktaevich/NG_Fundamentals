@@ -14,6 +14,8 @@ export class EventDetailsComponent implements OnInit {
 
     addmode: boolean;
     event: IEvent;
+    filterby: string = "All";
+    sortby:string="name";
 
     ngOnInit() {
         this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
@@ -23,12 +25,20 @@ export class EventDetailsComponent implements OnInit {
         this.addmode = true;
     }
 
-    saveNewSession(session:ISession) {
+    saveNewSession(session: ISession) {
         const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id));
-        session.id=nextId+1;
+        session.id = nextId + 1;
 
         this.event.sessions.push(session);
         this.eventService.updateEvent(this.event);
-        this.addmode=false;
+        this.addmode = false;
     }
+
+    cancelNewSession() {
+        this.addmode = false;
+    }
+
+
+  
+
 }

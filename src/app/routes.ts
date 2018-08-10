@@ -5,8 +5,8 @@ import { CreateEventComponent } from "./events/Create/create-event.component";
 import { Error404Component } from "./errors/404.component";
 import { EventRouteActivator } from "./events/event-details/event-route-activator.service";
 import { EventListResolver } from "./events/event-list-resolver.service";
-import { UserModule } from "./user/Module/user.module";
 import { CreateSessionComponent } from "./events/event-details/Sessions/create-session.component";
+import { UserModule } from "./user/Module/user.module";
 
 
 export const appRoutes: Routes = [
@@ -19,4 +19,3 @@ export const appRoutes: Routes = [
     { path: "user", loadChildren: () => UserModule }
 ]
 
-// { path: "user", loadChildren: './user/user.module#UserModule' }
