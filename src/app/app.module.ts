@@ -11,15 +11,20 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { CreateEventComponent } from './events/Create/create-event.component';
 import { Error404Component } from './errors/404.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolver } from './events/event-list-resolver.service';
 import { AuthService } from './user/auth.service';
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSessionComponent } from './events/event-details/Sessions/create-session.component';
 import { SessionListComponent } from './events/event-details/Sessions/sessions-list.component';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 import { DurationPipe } from './events/shared/duration.pipe';
+import { JQ_TOKEN } from "./common/jQuery.service";
+import { SimpleModalComponent } from './common/simpleModal.component';
+import { ModalTriggerDirective } from './common/modalTrigger.directive';
+import { HttpClientModule } from "@angular/common/http";
+import { EventResolver } from './events/event-resolver.service';
 
+let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -33,23 +38,28 @@ import { DurationPipe } from './events/shared/duration.pipe';
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
+    SimpleModalComponent,
+    ModalTriggerDirective,
     DurationPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EventService, EventRouteActivator,
+  providers: [EventService,
     {
       provide: 'canDeactivateCreateEvent'
       , useValue: checkdirtyState
     },
+    {provide:JQ_TOKEN,useValue:jQuery},
     AuthService,
     EventListResolver,
+    EventResolver
   ],
-  bootstrap: [EventsAppComponent] 
+  bootstrap: [EventsAppComponent]
 })
 export class AppModule { }
 
